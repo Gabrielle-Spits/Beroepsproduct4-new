@@ -15,6 +15,7 @@ import com.example.beroepsproduct4.R;
 import com.example.beroepsproduct4.database.DataDBHelper;
 import com.example.beroepsproduct4.model.Oudergegevens;
 import com.example.beroepsproduct4.model.Rollatorhoortbij;
+import com.example.beroepsproduct4.schermen.Rollatorgegevens.bluetooth.ConnectiemakenBluetoothActivity;
 import com.example.beroepsproduct4.schermen.oudergegevens.DetailOudergegevensActivity;
 import com.example.beroepsproduct4.schermen.oudergegevens.OudertoevoegenActivity;
 import com.example.beroepsproduct4.schermen.oudergegevens.OverzichtClientenactivity;
@@ -34,39 +35,45 @@ public class RollatorhoortbijDetailActivity extends AppCompatActivity {
             Cursor cur_rollatorhoorbij = db.rawQuery("select * from rollatorhorenbij where bsn=?",new String[]{oudergegevens.getBsn()});
             if((cur_rollatorhoorbij != null) && (cur_rollatorhoorbij.getCount() > 0)){
                 while (cur_rollatorhoorbij.moveToNext()) {
-                    @SuppressLint("Range") String strBsn = cur_rollatorhoorbij.getString(cur_rollatorhoorbij.getColumnIndex("bsn"));
-                    @SuppressLint("Range") String strRollator = cur_rollatorhoorbij.getString(cur_rollatorhoorbij.getColumnIndex("rollator"));
+                        @SuppressLint("Range") String strBsn = cur_rollatorhoorbij.getString(cur_rollatorhoorbij.getColumnIndex("bsn"));
+                        @SuppressLint("Range") String strRollator = cur_rollatorhoorbij.getString(cur_rollatorhoorbij.getColumnIndex("rollator"));
 
-//                  haal velden op van xml bestand
-                    TextView  txtvwbsngevuld = findViewById(R.id.txtDetailBsnGevuld);
-                    TextView txtRollatorgevuld = findViewById(R.id.txtDetailRollatorGevuld);
-                    Button btnBwerkRollatorHoortbij = findViewById(R.id.btnBwerkRollatorHoortbij);
-                    Button btnVerwijderRollatorHoortbij = findViewById(R.id.btnVerwijderRollatorhoortbij);
+    //                  haal velden op van xml bestand
+                        TextView  txtvwbsngevuld = findViewById(R.id.txtDetailBsnGevuld);
+                        TextView txtRollatorgevuld = findViewById(R.id.txtDetailRollatorGevuld);
+                        Button btnBwerkRollatorHoortbij = findViewById(R.id.btnBwerkRollatorHoortbij);
+                        Button btnVerwijderRollatorHoortbij = findViewById(R.id.btnVerwijderRollatorhoortbij);
+                        Button btnMaakconnectie = findViewById(R.id.btnMaakconnectie);
 
-                    txtvwbsngevuld.setText(strBsn);
-                    txtRollatorgevuld.setText(strRollator);
+                        txtvwbsngevuld.setText(strBsn);
+                        txtRollatorgevuld.setText(strRollator);
 
-                    btnBwerkRollatorHoortbij.setOnClickListener(v->{
-                        String Strbsn = txtvwbsngevuld.getText().toString();
-                        String StrRollator = txtRollatorgevuld.getText().toString();
-                        Oudergegevens ouderengegevens = new Oudergegevens(Strbsn);
-                        Rollatorhoortbij rollatorhoortbij = new Rollatorhoortbij(ouderengegevens, StrRollator);
-                        Intent intent1 = new Intent(RollatorhoortbijDetailActivity.this, RollatorhoortbijToevoegActivity.class);
-                        intent1.putExtra("rollator", rollatorhoortbij);
-                        startActivity(intent1);
-                    });
-                    btnVerwijderRollatorHoortbij.setOnClickListener(v->{
-                        String Strbsn = txtvwbsngevuld.getText().toString();
-                        String StrRollator = txtRollatorgevuld.getText().toString();
-                        Oudergegevens ouderengegevens = new Oudergegevens(Strbsn);
-                        Rollatorhoortbij rollatorhoortbij = new Rollatorhoortbij(ouderengegevens, StrRollator);
-                        long result = dbHelper.deleteRollatorhoortbij(rollatorhoortbij);
+                        btnBwerkRollatorHoortbij.setOnClickListener(v->{
+                            String Strbsn = txtvwbsngevuld.getText().toString();
+                            String StrRollator = txtRollatorgevuld.getText().toString();
+                            Oudergegevens ouderengegevens = new Oudergegevens(Strbsn);
+                            Rollatorhoortbij rollatorhoortbij = new Rollatorhoortbij(ouderengegevens, StrRollator);
+                            Intent intent1 = new Intent(RollatorhoortbijDetailActivity.this, RollatorhoortbijToevoegActivity.class);
+                            intent1.putExtra("rollator", rollatorhoortbij);
+                            startActivity(intent1);
+                        });
+                        btnVerwijderRollatorHoortbij.setOnClickListener(v->{
+                            String Strbsn = txtvwbsngevuld.getText().toString();
+                            String StrRollator = txtRollatorgevuld.getText().toString();
+                            Oudergegevens ouderengegevens = new Oudergegevens(Strbsn);
+                            Rollatorhoortbij rollatorhoortbij = new Rollatorhoortbij(ouderengegevens, StrRollator);
+                            long result = dbHelper.deleteRollatorhoortbij(rollatorhoortbij);
 
-                        if(result == 1){
-                            Intent intent2 = new Intent(RollatorhoortbijDetailActivity.this, MainActivity.class);
-                            startActivity(intent2);
-                        }
-                    });
+                            if(result == 1){
+                                Intent intent2 = new Intent(RollatorhoortbijDetailActivity.this, MainActivity.class);
+                                startActivity(intent2);
+                            }
+                        });
+
+                        btnMaakconnectie.setOnClickListener(v->{
+                            Intent intent3 = new Intent(RollatorhoortbijDetailActivity.this, ConnectiemakenBluetoothActivity.class);
+                            startActivity(intent3);
+                        });
 
                 }
             } else {

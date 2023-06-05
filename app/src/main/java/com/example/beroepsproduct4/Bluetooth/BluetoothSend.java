@@ -64,26 +64,49 @@ public class BluetoothSend {
         }
     }
 
-    public String getBluetoothw() throws IOException {
-        InputStream inputStream = socket.getInputStream();
-        String receivedText = "";
-        byte[] buffer = new byte[1024];
-        while (inputStream.available() > 0) {
-            int numBytes = inputStream.read(buffer);
-            receivedText = new String(buffer, 0, numBytes);
-            Log.e("receivedText", receivedText);
-        }
-        return receivedText;
+    public void Data() {
+        getData.start();
     }
 
-    public String getBluetooth() throws IOException {
-        InputStream inputStream = socket.getInputStream();
-        byte[] buffer = new byte[1024];
-        int numBytes = inputStream.read(buffer);
-        String receivedText = new String(buffer, 0, numBytes);
-        Log.e("receivedText", receivedText);
-        return receivedText;
+    Thread getData = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            try {
+                if (isConnected()) {
+                    getBluetoothw();
+                }
+            } catch (IOException e) {
+                Log.e("IOException", e.getMessage());
+            } catch (NullPointerException e) {
+                Log.e("NullPointerException", e.getMessage());
+            }
+        }
+    });
+
+    public String getBluetoothw() throws IOException {
+        while (socket.isConnected()) {
+            InputStream inputStream = socket.getInputStream();
+            String  receivedText = "";
+            byte[] buffer = new byte[1024];
+            while (inputStream.available() <= 0) {
+                int numBytes = inputStream.read(buffer);
+                receivedText = new String(buffer, 0, numBytes);
+                if (receivedText.isEmpty()){
+                    Log.e("isEmpty", "Yes");
+                } else {
+                    if(receivedText.equals("1")){
+                        Log.e("receivedText", receivedText);
+                    }
+                }
+            }
+            return receivedText;
+        }
+        return "test";
     }
+
+
+
+
 
     public boolean isConnected() throws IOException {
         return socket.isConnected();

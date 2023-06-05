@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.beroepsproduct4.R;
 
-public class BluetoothConnectiemaken extends AppCompatActivity {
+public class ConnectiemakenBluetoothActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bluetooth_connectiemaken);
+        setContentView(R.layout.activity_connectiemaken_bluetooth);
     }
 }

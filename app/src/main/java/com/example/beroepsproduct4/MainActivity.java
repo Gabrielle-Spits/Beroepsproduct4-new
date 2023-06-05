@@ -7,12 +7,13 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.example.beroepsproduct4.Bluetooth.BluetoothSend;
-import com.example.beroepsproduct4.model.Zorgcentrum;
 import com.example.beroepsproduct4.schermen.wooncentrum.ZorgcentrumToevoegenActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     public static final BluetoothSend bluetoothSend = new BluetoothSend();
+
+
 
 
     @Override
