@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".schermen.wooncentrum.ZorgcentrumToevoegenActivity">
+
+    <TableLayout
+        android:id="@+id/tableLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20px"
+        android:layout_marginLeft="20px"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="-16dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            >
+
+
+            <TextView
+                android:id="@+id/txtvwBSN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="100dp"
+                android:text="@string/bsn"
+                tools:ignore="RtlSymmetry" />
+
+            <EditText
+                android:id="@+id/edttxtBsn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txvwOudernaam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/oudernaam" />
+
+            <EditText
+                android:id="@+id/edttxtOudernaam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/txtvwZorgcentrum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Afdeling+Zorgcentrum" />
+
+            <Spinner
+                android:id="@+id/spnnrZorgcentrum"
+                android:layout_width="252dp"
+                android:layout_height="58dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </TableRow>
+
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/btnOudernaamtoevoegen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zorgcentrum toevoegen"
+        app:layout_constraintBottom_toBottomOf="@+id/tableLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

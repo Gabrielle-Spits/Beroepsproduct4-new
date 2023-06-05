@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".schermen.wooncentrum.DetailZorgcentrumActivity">
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        tools:layout_editor_absoluteX="127dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtdetailbsn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Bsn" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtDetailBsnGevuld"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtDetailRollator"
+                android:layout_width="63dp"
+                android:layout_height="wrap_content"
+                android:text="@string/Rollator" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtDetailRollatorGevuld"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+
+
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="124dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnBwerkRollatorHoortbij"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bewerk"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Space
+                android:layout_width="50dp"
+                android:layout_height="wrap_content" />
+
+
+            <Button
+                android:id="@+id/btnVerwijderRollatorhoortbij"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="verwijder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+        </TableRow>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="25dp" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="124dp"
+            android:gravity="center">
+
+
+            <Button
+                android:id="@+id/btnMaakconnectie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="maak Connectie"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+        </TableRow>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="25dp" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="124dp"
+            android:gravity="center">
+
+
+            <Button
+                android:id="@+id/btnVerbreekConnectie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Verbreek connectie"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+        </TableRow>
+
+
+    </TableLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

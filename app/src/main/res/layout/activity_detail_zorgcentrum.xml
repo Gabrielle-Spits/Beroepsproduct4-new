@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".schermen.wooncentrum.DetailZorgcentrumActivity">
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        tools:layout_editor_absoluteX="127dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtdetailAfdeling"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/afdeling1" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtdetailAfdelingGevuld"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtDetailZorgcentrum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zorgcentrum2" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtDetailZorgcentrumGevuld"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+        </TableRow>
+
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="124dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnBewerkZorgcentrum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bewerk"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Space
+                android:layout_width="50dp"
+                android:layout_height="wrap_content" />
+
+
+            <Button
+                android:id="@+id/btnVerwijderZorgcentrum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="verwijder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+        </TableRow>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="25dp" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="124dp"
+            android:gravity="center">
+
+
+            <Button
+                android:id="@+id/btnBekijkClienten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bekijk cliënten"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+        </TableRow>
+
+
+    </TableLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

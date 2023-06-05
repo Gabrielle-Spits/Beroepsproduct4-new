@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Beroepsproduct4"
+        tools:targetApi="31">
+        <activity
+            android:name=".schermen.Rollatorhoortbij.RollatorhoortbijDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".schermen.Rollatorhoortbij.RollatorhoortbijToevoegActivity"
+            android:exported="false" />
+        <activity
+            android:name=".schermen.oudergegevens.DetailOudergegevensActivity"
+            android:exported="false" />
+        <activity
+            android:name=".schermen.oudergegevens.OudertoevoegenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".schermen.oudergegevens.OverzichtClientenactivity"
+            android:exported="false" />
+        <activity
+            android:name=".schermen.wooncentrum.DetailZorgcentrumActivity"
+            android:exported="false" />
+        <activity
+            android:name=".schermen.wooncentrum.ZorgcentrumToevoegenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

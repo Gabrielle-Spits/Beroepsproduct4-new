@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Beroepsproduct4</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="kies_zorgcentrum_afdeling">Kies zorgcentrum + afdeling</string>
+    <string name="voeg_zorgcentrum_toe">Voeg zorgcentrum toe</string>
+    <string name="afdeling">afdeling</string>
+    <string name="zorgcentrum">Zorgcentrum:</string>
+    <string name="zorgcentrum1">Zorgcentrum</string>
+    <string name="afdeling1">Afdeling:</string>
+    <string name="zorgcentrum2">Zorgcentrum:</string>
+    <string name="bewerk">Bewerk</string>
+    <string name="Kiesouder">kies client</string>
+    <string name="voeg_client_toe">Voeg client toe</string>
+    <string name="bsn">BSN:</string>
+    <string name="oudernaam">Oudernaam:</string>
+    <string name="Bsn">BSN:</string>
+    <string name="Rollator">Rollator:</string>
+</resources>
