@@ -11,6 +11,10 @@ public class Rollatorhoortbij implements Parcelable {
 
     }
 
+    public Rollatorhoortbij(String rollator) {
+        this.rollator = rollator;
+    }
+
     public Rollatorhoortbij(Oudergegevens bsn, String rollator) {
         this.oudergegevens = bsn;
         this.rollator = rollator;

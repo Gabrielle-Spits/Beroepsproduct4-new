@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Beroepsproduct4"
         tools:targetApi="31">
         <activity
+            android:name=".BluetoothConnectiemaken"
+            android:exported="false" />
+        <activity
             android:name=".schermen.Rollatorhoortbij.RollatorhoortbijDetailActivity"
             android:exported="false" />
         <activity

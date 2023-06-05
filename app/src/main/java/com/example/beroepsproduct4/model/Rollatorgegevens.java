@@ -3,15 +3,15 @@ package com.example.beroepsproduct4.model;
 import java.time.LocalDateTime;
 
 public class Rollatorgegevens {
-    private String rollator;
+    private Rollatorhoortbij rollator;
     private LocalDateTime datum;
 
 
-    public String getrollator() {
+    public Rollatorhoortbij getRollator() {
         return rollator;
     }
 
-    public void setRollator(String rollator) {
+    public void setRollator(Rollatorhoortbij rollator) {
         this.rollator = rollator;
     }
 
