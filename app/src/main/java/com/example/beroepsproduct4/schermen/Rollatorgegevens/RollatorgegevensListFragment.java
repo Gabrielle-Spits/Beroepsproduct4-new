@@ -46,6 +46,8 @@ public class RollatorgegevensListFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.fragment_rollatorgegevens_list, container, false);
+
+//      maak lijst voor rollatorgegevens
         ListView lvRollatorgegevens = v.findViewById(R.id.lvRolattorgegevens);
         DataDBHelper dbHelper = new DataDBHelper(v.getContext());
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -63,12 +65,14 @@ public class RollatorgegevensListFragment extends Fragment {
         ArrayAdapter<Rollatorgegevens> rollatorgegevensArrayAdapter = new RollatorgegevensArrayAdapter(v.getContext(), R.layout.rollatorgegevens_list_adapter, alRollatorgegevens);
         lvRollatorgegevens.setAdapter(rollatorgegevensArrayAdapter);
 
+//      mochten er nieuwe meldingen zijn
         Button refreshlijst = v.findViewById(R.id.refreshlijst);
         refreshlijst.setOnClickListener(view-> {
             Intent intent = new Intent(view.getContext(), OverzichtMeldingenActivity.class);
             startActivity(intent);
-
         });
+
+//      verbreek connectie voor deze rollator
         Button verbreekConnectie = v.findViewById(R.id.btnVerbreekconnectie);
         verbreekConnectie.setOnClickListener(view -> {
             BluetoothSend bluetoothSend = MainActivity.bluetoothSend;

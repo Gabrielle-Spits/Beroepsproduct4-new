@@ -57,10 +57,8 @@ public class RollatorhoortbijToevoegActivity extends AppCompatActivity {
                         Intent intent1 = new Intent(RollatorhoortbijToevoegActivity.this, MainActivity.class);
                         startActivity(intent1);
                         Toast.makeText(this, "Rollator is succesvol toegevoegd", Toast.LENGTH_SHORT).show();
-
                     } else{
                         Toast.makeText(this, "Deze rollator bestaat al", Toast.LENGTH_SHORT).show();
-
                     }
                 }
             });
@@ -77,7 +75,7 @@ public class RollatorhoortbijToevoegActivity extends AppCompatActivity {
             btnRollatorhoortbijToevooegen.setOnClickListener(v-> {
                 String StrRollator = edttxtRollator.getText().toString();
                 if(StrRollator.isEmpty()){
-
+                    Toast.makeText(this, "Vul alle gegevens in", Toast.LENGTH_SHORT).show();
                 } else {
                     Oudergegevens bsn = (Oudergegevens) spnnerBsn.getSelectedItem();
                     String Strbsn = bsn.getBsn();
@@ -89,6 +87,7 @@ public class RollatorhoortbijToevoegActivity extends AppCompatActivity {
                     } else {
                         Intent intent2 = new Intent(RollatorhoortbijToevoegActivity.this, MainActivity.class);
                         startActivity(intent2);
+                        Toast.makeText(this, "Rollatorhoort bij is succesvol toegevoegd ", Toast.LENGTH_SHORT).show();
                     }
                 }
             });

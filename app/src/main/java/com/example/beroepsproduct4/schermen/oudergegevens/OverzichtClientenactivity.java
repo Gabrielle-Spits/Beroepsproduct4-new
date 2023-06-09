@@ -18,13 +18,17 @@ public class OverzichtClientenactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overzicht_clientenactivity);
 
+//      haal zorgcentrum op
         Intent intent1 = getIntent();
         Zorgcentrum zorgcentrum = intent1.getParcelableExtra("zorgcentrum");
+
+//      zet gegevens in string
         String afdeling = zorgcentrum.getAfdeling();
         String zorgcenttrum = zorgcentrum.getZorgcentrum();
         Zorgcentrum Zorgcentrum1 = new Zorgcentrum(afdeling,zorgcenttrum);
-        Button btnToevoegenclient = findViewById(R.id.btnToevoegenclient);
 
+        Button btnToevoegenclient = findViewById(R.id.btnToevoegenclient);
+//      voeg clienten toe neem hierbij zorgcentrum mee
         btnToevoegenclient.setOnClickListener(v->{
             Intent intent = new Intent(OverzichtClientenactivity.this, OudertoevoegenActivity.class);
             intent.putExtra("zorgcentrum",Zorgcentrum1);

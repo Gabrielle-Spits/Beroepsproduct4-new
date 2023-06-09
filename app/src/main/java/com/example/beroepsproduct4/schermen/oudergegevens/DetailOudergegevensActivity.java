@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.beroepsproduct4.MainActivity;
 import com.example.beroepsproduct4.R;
@@ -25,7 +26,7 @@ public class DetailOudergegevensActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_oudergegevens);
-        //        haal ingevulde gegevens op
+//        haal ingevulde gegevens op
         Intent intent = getIntent();
         Oudergegevens oudergegevens = intent.getParcelableExtra("oudergegevens");
 
@@ -44,7 +45,7 @@ public class DetailOudergegevensActivity extends AppCompatActivity {
         txtvwAfdelingGevuld.setText(oudergegevens.getZorgcentrum().getAfdeling());
         txtvwZorgcentrumGevuld.setText(oudergegevens.getZorgcentrum().getZorgcentrum());
 
-
+//      actie voor updaten ouderengegevens
         btnBewerkOudergegevens.setOnClickListener(V->{
             String Bsn = txtvwBsnGevuld.getText().toString();
             String Oudernaam = txtvwOudernaamGevuld.getText().toString();
@@ -59,6 +60,7 @@ public class DetailOudergegevensActivity extends AppCompatActivity {
             startActivity(intent1);
         });
 
+//        actie voor verwijderen ouderengegevens
         btnVerwijderOudergegevens.setOnClickListener(v->{
             String StrBSN = txtvwBsnGevuld.getText().toString();
             Oudergegevens oudergegevensdelete = new Oudergegevens(StrBSN);
@@ -68,9 +70,11 @@ public class DetailOudergegevensActivity extends AppCompatActivity {
             if(result == 1){
                 Intent intent2 = new Intent(DetailOudergegevensActivity.this, MainActivity.class);
                 startActivity(intent2);
+                Toast.makeText(this, "Ouderengegevens zijn succesvol verwijderd", Toast.LENGTH_SHORT).show();
             }
         });
 
+//        rollator bekijken die bij ouder hoort
         btnBekijkRollator.setOnClickListener(v->{
             String StrBSN = txtvwBsnGevuld.getText().toString();
             Oudergegevens ouderengegevensrollator = new Oudergegevens(StrBSN);

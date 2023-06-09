@@ -59,15 +59,16 @@ public class ZorgcentrumToevoegenActivity extends AppCompatActivity {
                 String zorcentrum = edttxtZorgcenturm.getText().toString();
 
                 if(afdeling.isEmpty() || zorcentrum.isEmpty()){
-
+                    Toast.makeText(this, "Vul alle velden", Toast.LENGTH_SHORT).show();
                 } else {
                     Zorgcentrum zorgcentrum1 = new Zorgcentrum(afdeling,zorcentrum);
                     long result = dbHelper.insertZorcentrum(zorgcentrum1);
                     if (result == -1 || result == 0){
-
+                        Toast.makeText(this, "Deze zorgcentrum bestaat al", Toast.LENGTH_SHORT).show();
                     }else {
                         Intent intent = new Intent(v.getContext(), MainActivity.class);
                         startActivity(intent);
+                        Toast.makeText(this, "Zorgcentrum is succesvol toegevoegd", Toast.LENGTH_SHORT).show();
                     }
                 }
             });

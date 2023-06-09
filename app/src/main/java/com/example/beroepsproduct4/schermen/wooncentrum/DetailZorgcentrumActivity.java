@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.beroepsproduct4.MainActivity;
 import com.example.beroepsproduct4.R;
@@ -61,6 +62,9 @@ public class DetailZorgcentrumActivity extends AppCompatActivity {
             if(result == 1){
                 Intent intent = new Intent(DetailZorgcentrumActivity.this, MainActivity.class);
                 startActivity(intent);
+                Toast.makeText(this, "Zorgcentrum is succesvol verwijderd", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Er is iets fout gegaan probeer het opnieuw", Toast.LENGTH_SHORT).show();
             }
         });
 

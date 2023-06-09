@@ -35,6 +35,7 @@ public class OudertoevoegenActivity extends AppCompatActivity {
         EditText edttxtOudernaam = findViewById(R.id.edttxtOudernaam);
         Button btnOudernaamtoevoegen = findViewById(R.id.btnOudernaamtoevoegen);
 
+//      update ouderengegevens
         if(ouderengegevens != null){
             btnOudernaamtoevoegen.setText("update");
             edtbsn.setText(ouderengegevens.getBsn());
@@ -57,27 +58,21 @@ public class OudertoevoegenActivity extends AppCompatActivity {
                         Intent intent2 = new Intent(OudertoevoegenActivity.this, MainActivity.class);
                         startActivity(intent2);
                         Toast.makeText(this, "De oudergegevens zijn succesvol bewerkt", Toast.LENGTH_SHORT).show();
-
+                    } else{
+                        Toast.makeText(this, "Zorgcentrum bestaat al", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
-
-
-
-
-
             ArrayList<Zorgcentrum> alZorgcentrums = dbHelper.SpinnerZorgcentrum();
             ArrayAdapter<Zorgcentrum> zorgcentrumArrayAdapter = new ArrayAdapter<>(OudertoevoegenActivity.this, android.R.layout.simple_spinner_item, alZorgcentrums);
             zorgcentrumArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(zorgcentrumArrayAdapter);
             selectSpinnerValue(spinner, ouderengegevens.getZorgcentrum().toString());
-
-
-        }else {
+        }
+        else {
 //        haal zorgcentrum op
             Intent intent1 = getIntent();
             Zorgcentrum zorgcentrum = intent1.getParcelableExtra("zorgcentrum");
-//        velden van xml halen
 
             btnOudernaamtoevoegen.setOnClickListener(v->{
                 String strbsn = edtbsn.getText().toString();
@@ -85,8 +80,8 @@ public class OudertoevoegenActivity extends AppCompatActivity {
 
                 if(strbsn.isEmpty() || strOudernaam.isEmpty()){
                     Toast.makeText(this, "Vul alle velden in", Toast.LENGTH_SHORT).show();
-
-                }else{
+                }
+                else{
                     Zorgcentrum z = (Zorgcentrum) spinner.getSelectedItem();
                     String Strafdeling = z.getAfdeling();
                     String Strzorgcentrum = z.getZorgcentrum();

@@ -40,10 +40,13 @@ public class ConnectieLijstFragment extends Fragment {
         Rollatorhoortbij rollatorhoortbij = getActivity().getIntent().getParcelableExtra("rollatornaam");
 
         View v =  inflater.inflate(R.layout.fragment_connectie_lijst, container, false);
+
+//       maak lijst voor gepairde lijsten
         ListView list = v.findViewById(R.id.lvConecctieLijst);
         pairedDevicesArrayAdapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1);
         bluetoothSend.showPairedDevices(list, pairedDevicesArrayAdapter);
 
+//        zet lijst op clicklistener
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -78,7 +81,7 @@ public class ConnectieLijstFragment extends Fragment {
         });
 
         Button btnAlverbonden = v.findViewById(R.id.btnAlverbonden);
-
+//      mocht de rollator al verbonden zijn.
         btnAlverbonden.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), OverzichtMeldingenActivity.class);
             startActivity(intent);

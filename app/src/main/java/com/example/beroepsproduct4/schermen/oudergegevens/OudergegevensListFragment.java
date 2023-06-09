@@ -42,12 +42,16 @@ public class OudergegevensListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_oudergegevens_list, container, false);
-
+//      haalt zorgcentrum op zodat je specifiek kan selecteren
         Zorgcentrum Zorgcentrum = getActivity().getIntent().getParcelableExtra("zorgcentrum");
+
+//      Als zorgcentrum leeg is stuur door naar toevoeg pagina
         if(Zorgcentrum == null){
             Intent intent = new Intent(this.getContext(), OudertoevoegenActivity.class);
             startActivity(intent);
-        }else {
+        }
+//      laat lijst zien met alle ouderen van specifieke afdeling en zorgcentrum
+        else {
             String StrAfdeling = Zorgcentrum.getAfdeling();
             String StrZorgcentrum = Zorgcentrum.getZorgcentrum();
 
@@ -56,6 +60,7 @@ public class OudergegevensListFragment extends Fragment {
             SQLiteDatabase db = dbHelper.getReadableDatabase();
             Cursor cur_oudergegevens = db.rawQuery("select * from ouderengegevens where afdeling=? and zorgcentrum=?",new String[]{StrAfdeling,StrZorgcentrum});
             ArrayList<Oudergegevens> alOuderengegevens = new ArrayList<>();
+//          als de cursor niet leeg is
             if((cur_oudergegevens != null) && (cur_oudergegevens.getCount() > 0)) {
                 if (cur_oudergegevens.moveToFirst()) {
                     do {
@@ -68,6 +73,7 @@ public class OudergegevensListFragment extends Fragment {
                     db.close();
                 }
             }
+//          als de cursor leeg is
             else {
                 Intent intent = new Intent(this.getContext(), OudertoevoegenActivity.class);
                 intent.putExtra("zorgcentrum",Zorgcentrum);
@@ -77,6 +83,7 @@ public class OudergegevensListFragment extends Fragment {
 
             ArrayAdapter<Oudergegevens> oudergegevensArrayAdapter = new OudergegevensArrayAdapter(v.getContext(), R.layout.oudergegevens_list_adapter, alOuderengegevens);
             lstvwOudergegevens.setAdapter(oudergegevensArrayAdapter);
+//          zet lijst op click listener
             lstvwOudergegevens.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -86,14 +93,7 @@ public class OudergegevensListFragment extends Fragment {
                     startActivity(intent);
                 }
             });
-
         }
-
-
-
-
-
         return v;
     }
-
 }

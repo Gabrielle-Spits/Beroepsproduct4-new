@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.beroepsproduct4.MainActivity;
 import com.example.beroepsproduct4.R;
@@ -29,6 +30,7 @@ public class RollatorhoortbijDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Oudergegevens oudergegevens = intent.getParcelableExtra("oudergegevensupdate");
 
+//      als bsn niet leeg is
         if(oudergegevens != null){
             DataDBHelper dbHelper = new DataDBHelper(this);
             SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -67,6 +69,7 @@ public class RollatorhoortbijDetailActivity extends AppCompatActivity {
                             if(result == 1){
                                 Intent intent2 = new Intent(RollatorhoortbijDetailActivity.this, MainActivity.class);
                                 startActivity(intent2);
+                                Toast.makeText(this, "Rollatorhoortbij is succesvol verwijderd", Toast.LENGTH_SHORT).show();
                             }
                         });
 
@@ -77,9 +80,6 @@ public class RollatorhoortbijDetailActivity extends AppCompatActivity {
                             intent3.putExtra("rollatornaam",rollatorhoortbij);
                             startActivity(intent3);
                         });
-
-
-
                 }
             } else {
                 Intent intent1 = new Intent(RollatorhoortbijDetailActivity.this, RollatorhoortbijToevoegActivity.class);
@@ -88,8 +88,5 @@ public class RollatorhoortbijDetailActivity extends AppCompatActivity {
                 startActivity(intent1);
             }
         }
-
-
-
     }
 }
