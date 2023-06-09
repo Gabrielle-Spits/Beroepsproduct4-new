@@ -72,8 +72,13 @@ public class RollatorhoortbijDetailActivity extends AppCompatActivity {
 
                         btnMaakconnectie.setOnClickListener(v->{
                             Intent intent3 = new Intent(RollatorhoortbijDetailActivity.this, ConnectiemakenBluetoothActivity.class);
+                            String StrRollator = txtRollatorgevuld.getText().toString();
+                            Rollatorhoortbij rollatorhoortbij = new Rollatorhoortbij(StrRollator);
+                            intent3.putExtra("rollatornaam",rollatorhoortbij);
                             startActivity(intent3);
                         });
+
+
 
                 }
             } else {

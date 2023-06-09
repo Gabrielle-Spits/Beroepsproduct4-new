@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.beroepsproduct4.MainActivity;
 import com.example.beroepsproduct4.R;
@@ -45,7 +46,7 @@ public class RollatorhoortbijToevoegActivity extends AppCompatActivity {
                 String OldStringRollator = rollator.getrollator();
                 String Strrollator = edttxtRollator.getText().toString();
                 if(Strrollator.isEmpty()){
-
+                    Toast.makeText(this, "Vul alle gegevens in", Toast.LENGTH_SHORT).show();
                 }else {
                     Oudergegevens bsnspinner = (Oudergegevens) spnnerBsn.getSelectedItem();
                     String Strbsn = bsnspinner.getBsn();
@@ -55,6 +56,11 @@ public class RollatorhoortbijToevoegActivity extends AppCompatActivity {
                     if(result == 1){
                         Intent intent1 = new Intent(RollatorhoortbijToevoegActivity.this, MainActivity.class);
                         startActivity(intent1);
+                        Toast.makeText(this, "Rollator is succesvol toegevoegd", Toast.LENGTH_SHORT).show();
+
+                    } else{
+                        Toast.makeText(this, "Deze rollator bestaat al", Toast.LENGTH_SHORT).show();
+
                     }
                 }
             });

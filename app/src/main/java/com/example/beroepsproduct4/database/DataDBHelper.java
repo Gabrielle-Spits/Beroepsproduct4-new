@@ -6,13 +6,16 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import com.example.beroepsproduct4.model.Oudergegevens;
+import com.example.beroepsproduct4.model.Rollatorgegevens;
 import com.example.beroepsproduct4.model.Rollatorhoortbij;
 import com.example.beroepsproduct4.model.Zorgcentrum;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 
@@ -45,7 +48,7 @@ public class DataDBHelper extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_Rollatorgegevens = "create table " + RollatorDataContract.Rollatorgegevens.TABLE_NAME + "(" +
             RollatorDataContract.Rollatorgegevens.Column_Name_Rollator + " text NOT NULL, " +
-            RollatorDataContract.Rollatorgegevens.Column_Name_Date + " Date NOT NULL, " +
+            RollatorDataContract.Rollatorgegevens.Column_Name_Date + " text NOT NULL, " +
             "PRIMARY KEY (" + RollatorDataContract.Rollatorgegevens.Column_Name_Rollator +"," + RollatorDataContract.Rollatorgegevens.Column_Name_Date +"),"+
             "FOREIGN KEY (" + RollatorDataContract.Rollatorgegevens.Column_Name_Rollator + ") REFERENCES " + RollatorDataContract.Rollatorhorenbij.TABLE_NAME + " (" + RollatorDataContract.Rollatorhorenbij.Column_Name_Rollator + ")" +
             " ON DELETE CASCADE "+" ON UPDATE CASCADE)";
@@ -204,6 +207,8 @@ public class DataDBHelper extends SQLiteOpenHelper {
         return result;
     }
 
+
+
     public ArrayList<Oudergegevens> SpinnerOuderenbsn(String bsn) {
         ArrayList<Oudergegevens> ouderenbsn = new ArrayList();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -244,6 +249,38 @@ public class DataDBHelper extends SQLiteOpenHelper {
 
         }catch (SQLException se){
             se.getMessage();
+        }
+        return result;
+    }
+
+    public long updaterollatornaamhoortbij(String rollatorNaam, String device) {
+        long result = 0;
+        try {
+            SQLiteDatabase db = this.getReadableDatabase();
+            ContentValues values = new ContentValues();
+            values.put(RollatorDataContract.Rollatorhorenbij.Column_Name_Rollator,device);
+            result = db.update(RollatorDataContract.Rollatorhorenbij.TABLE_NAME,values,"rollator=?",new String[]{rollatorNaam});
+        }catch (SQLException se){
+            se.getMessage();
+        }
+        return result;
+
+
+
+
+    }
+
+
+    public long insertRollatorgegevens(String device, String currentTime) {
+        long result = 0;
+        try {
+            SQLiteDatabase db = this.getReadableDatabase();
+            ContentValues values = new ContentValues();
+            values.put(RollatorDataContract.Rollatorgegevens.Column_Name_Rollator, device);
+            values.put(RollatorDataContract.Rollatorgegevens.Column_Name_Date, currentTime);
+            result = db.insert(RollatorDataContract.Rollatorgegevens.TABLE_NAME, null, values);
+        }catch (SQLException sqlex) {
+            sqlex.getMessage();
         }
         return result;
     }

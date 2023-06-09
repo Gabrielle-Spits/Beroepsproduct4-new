@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.beroepsproduct4.MainActivity;
 import com.example.beroepsproduct4.R;
@@ -40,13 +41,14 @@ public class ZorgcentrumToevoegenActivity extends AppCompatActivity {
                 String zorcentrum = edttxtZorgcenturm.getText().toString();
 
                 if(afdeling.isEmpty() || zorcentrum.isEmpty()){
-
+                    Toast.makeText(this, "Vul alle velden", Toast.LENGTH_SHORT).show();
                 } else{
                     Zorgcentrum zorgcentrum1 = new Zorgcentrum(afdeling,zorcentrum);
                     long result = dbHelper.updatezorgcentrum(zorgcentrum1,oldzorgencentrum);
                     if(result == 1){
                         Intent intent = new Intent(ZorgcentrumToevoegenActivity.this, MainActivity.class);
                         startActivity(intent);
+                        Toast.makeText(this, "Zorgcentrum is succesvol bewerkt", Toast.LENGTH_SHORT).show();
                     }
 
                 }

@@ -6,10 +6,29 @@
     tools:context=".schermen.Rollatorgegevens.bluetooth.ConnectieLijstFragment">
 
 
-    <ListView
-        android:id="@+id/lvConecctieLijst"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="449dp"
-        />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/lvConecctieLijst"
+            android:layout_width="match_parent"
+            android:layout_height="449dp">
+        </ListView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnAlverbonden"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Al verbonden" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </FrameLayout>

@@ -5,14 +5,23 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.os.Build;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import androidx.annotation.RequiresApi;
+
+import com.example.beroepsproduct4.MainActivity;
+import com.example.beroepsproduct4.database.DataDBHelper;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Set;
 
 public class BluetoothSend {
@@ -64,25 +73,12 @@ public class BluetoothSend {
         }
     }
 
-    public void Data() {
-        getData.start();
-    }
 
-    Thread getData = new Thread(new Runnable() {
-        @Override
-        public void run() {
-            try {
-                if (isConnected()) {
-                    getBluetoothw();
-                }
-            } catch (IOException e) {
-                Log.e("IOException", e.getMessage());
-            } catch (NullPointerException e) {
-                Log.e("NullPointerException", e.getMessage());
-            }
-        }
-    });
 
+
+
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public String getBluetoothw() throws IOException {
         while (socket.isConnected()) {
             InputStream inputStream = socket.getInputStream();
@@ -95,8 +91,18 @@ public class BluetoothSend {
                     Log.e("isEmpty", "Yes");
                 } else {
                     if(receivedText.equals("1")){
+                        String device = MainActivity.device;
+                        String currentTime = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date());
                         Log.e("receivedText", receivedText);
+                        DataDBHelper dbHelper = new DataDBHelper(MainActivity.applicatiion);
+                        Long result = dbHelper.insertRollatorgegevens(device,currentTime);
+                        if(!(result == 0 || result == -1)){
+                            Tasks task = new Tasks(MainActivity.applicatiion,MainActivity.notficatie);
+                            task.sendNotification("de rollator " + device + " is gevallen","Gevallen");
+                        }
                     }
+
+
                 }
             }
             return receivedText;

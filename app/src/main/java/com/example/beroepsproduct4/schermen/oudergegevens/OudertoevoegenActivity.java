@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.beroepsproduct4.MainActivity;
 import com.example.beroepsproduct4.R;
@@ -44,7 +45,7 @@ public class OudertoevoegenActivity extends AppCompatActivity {
                 String Strbsn = edtbsn.getText().toString();
                 String StrOudernaam = edttxtOudernaam.getText().toString();
                 if(Strbsn.isEmpty() || StrOudernaam.isEmpty()){
-
+                    Toast.makeText(this, "vul alle gegevens in", Toast.LENGTH_SHORT).show();
                 } else{
                     Zorgcentrum z = (Zorgcentrum) spinner.getSelectedItem();
                     String Strafdeling = z.getAfdeling();
@@ -55,6 +56,8 @@ public class OudertoevoegenActivity extends AppCompatActivity {
                     if(result == 1){
                         Intent intent2 = new Intent(OudertoevoegenActivity.this, MainActivity.class);
                         startActivity(intent2);
+                        Toast.makeText(this, "De oudergegevens zijn succesvol bewerkt", Toast.LENGTH_SHORT).show();
+
                     }
                 }
             });
@@ -81,6 +84,7 @@ public class OudertoevoegenActivity extends AppCompatActivity {
                 String strOudernaam = edttxtOudernaam.getText().toString();
 
                 if(strbsn.isEmpty() || strOudernaam.isEmpty()){
+                    Toast.makeText(this, "Vul alle velden in", Toast.LENGTH_SHORT).show();
 
                 }else{
                     Zorgcentrum z = (Zorgcentrum) spinner.getSelectedItem();
@@ -90,14 +94,15 @@ public class OudertoevoegenActivity extends AppCompatActivity {
                     Oudergegevens oudergegevens = new Oudergegevens(strbsn,strOudernaam,objZorgcentrum);
                     long result = dbHelper.insertOudergegevens(oudergegevens);
                     if (result == -1 || result == 0){
-
+                        Toast.makeText(this, "Er is iets fout gegaan probeer opnieuw", Toast.LENGTH_SHORT).show();
                     }else {
                         Intent intent2 = new Intent(v.getContext(), MainActivity.class);
                         startActivity(intent2);
+                        Toast.makeText(this, "oudergegevens is succesvol toegevoegd", Toast.LENGTH_SHORT).show();
                     }
                 }
-
             });
+
 //        spinner content
             ArrayList<Zorgcentrum> alZorgcentrums = dbHelper.SpinnerZorgcentrum();
             ArrayAdapter<Zorgcentrum> zorgcentrumArrayAdapter = new ArrayAdapter<>(OudertoevoegenActivity.this, android.R.layout.simple_spinner_item, alZorgcentrums);
@@ -106,17 +111,8 @@ public class OudertoevoegenActivity extends AppCompatActivity {
             if(zorgcentrum!= null){
                 selectSpinnerValue(spinner, zorgcentrum.toString());
             }
-
-
         }
-
-
-
-
-
     }
-
-
 
     private void selectSpinnerValue(Spinner spinner, String myString)
     {
@@ -128,10 +124,4 @@ public class OudertoevoegenActivity extends AppCompatActivity {
             }
         }
     }
-
-
-
-
-
-
-    }
+}

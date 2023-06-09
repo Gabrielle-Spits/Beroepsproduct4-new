@@ -4,7 +4,12 @@ import java.time.LocalDateTime;
 
 public class Rollatorgegevens {
     private Rollatorhoortbij rollator;
-    private LocalDateTime datum;
+    private String datum;
+
+
+    public Rollatorgegevens() {
+
+    }
 
 
     public Rollatorhoortbij getRollator() {
@@ -15,11 +20,20 @@ public class Rollatorgegevens {
         this.rollator = rollator;
     }
 
-    public LocalDateTime datum() {
+    public Rollatorhoortbij rollator() {
+        return rollator;
+    }
+
+    public String getDatum() {
         return datum;
     }
 
-    public void setDatum(LocalDateTime datum) {
+    public void setDatum(String datum) {
         this.datum = datum;
+    }
+
+    @Override
+    public String toString() {
+        return  "Rollator gevallen" + rollator + " op " +datum;
     }
 }
